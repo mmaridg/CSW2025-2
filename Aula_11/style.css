@@ -1,7 +1,20 @@
+@font-face {
+    font-family: "TopSecret";
+    src: url("./fontes/TopSecret.ttf") format(truetype);
+}
+
+@font-face {
+    font-family: "GimmeDanger";
+    src: url("./fontes/GimmeDanger.ttf") format(truetype);
+}
+
+@font-face {
+    font-family: "LLCOOPER";
+    src: url("./fontes/LLCOOPER.ttf") format(truetype);
+}
+
 body {  
     background-color: #CCB1B3;
-
-    
 }
 
 h1 {
@@ -68,3 +81,17 @@ iframe {
     text-align: justify;
     padding: 10px;
 }
+
+#top {
+    font-family: 'TopSecret', Arial, sans-serif;
+}
+
+#gimme {
+    font-family: 'GimmeDanger', Arial, sans-serif;
+}
+
+#LL {
+    
+}
+
+

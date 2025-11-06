@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Aula 15 - Calculadora Java</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        document.writeln("Calculadora de Idade")
+    </script>
+    <h1>Cálculadora de Idade</h1>
+
+    <label for="nascimento">Digite o dia o nascimento: </label> <br>
+    <div>
+        <input id='dia' size="60" type="number" min="1" max="31">
+        <br>
+
+        <label for="mes">Mês:</label><br>
+        <select id="mes">
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+        </select> <br>
+
+        <label for="ano">Ano de nascimento:</label><br>
+        <input id="ano" size="60" type="number">
+        <button onclick="enviarResposta()">Enviar</button>
+
+        <div id="resultado"></div>
+
+    </div>
+    <br>
+
+    <script type="text/javascript">
+
+        function calcularIdade() {
+            var hoje = new Date()
+
+            let result = document.getElementById("resultado").innerHTML
+
+            let dia = document.getElementById("dia").value
+            let mes = document.getElementById("mes").value
+            let ano = document.getElementById("ano").value
+
+            if (dia <= 0 || dia > 31 || ano <= 0) {
+                alert("Digite uma data de nascimento válida")
+                return
+            }
+
+            let nascimento = new Date(ano + "/" + mes + "/" + dia);
+
+            var idade = hoje.gerFullYear() - nascimento.getFullYear()
+
+            let dth = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate())
+            let dth2 = new Date(hoje.getFullYear(), nascimento.getMonth(), nascimento.getDate())
+
+            if (dth < dth2) {
+                idade--;
+            }
+            result = "A sua idade é " + idade
+
+        }
+
+    </script>
+
+
+</body>
+</html>

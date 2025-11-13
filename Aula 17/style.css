@@ -1,0 +1,42 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+h1{
+    background-image: url(mlp.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    border: #33333331 3px solid;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2); 
+    padding: 30px;
+}
+
+.container {
+    border: #33333331 3px solid;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2); 
+    padding: 30px;
+    text-align: center;
+    
+}
+
+.input {
+    border: #33333331 3px solid;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2); 
+    padding: 30px;
+    text-align: justify;
+}
+
+#mensagem {
+    transition: opacity 0.3s ease;
+}

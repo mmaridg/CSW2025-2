@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./calculadora.js"></script>
+    
+</head>
+<body>
+
+<div class="container">
+    <h1 class="titulo">Calcular Minha Idade</h1>
+    
+    <div class="input">
+        <label class="data" for="dia">Data de Nascimento:</label>
+        
+        <div class="flex space-x-2">
+            <input type="number" id="dia" placeholder="Dia" min="1" max="31" class="data">
+            <input type="number" id="mes" placeholder="Mês (1-12)" min="1" max="12" class="data">
+            <input type="number" id="ano" placeholder="Ano" min="1900" class="data">
+        </div>
+        
+        <button onclick="calcularIdade()" class="botao">
+            Calcular Idade
+        </button>
+    </div>
+
+    <div id="mensagem" class="mensagem" style="opacity: 0;">
+        <p id="resultado" class="resultado"></p>
+    </div>
+</div>
+
+<script>
+    function exibirMensagem(texto, tipo = 'info') {
+        const mensagemDiv = document.getElementById('mensagem');
+        const resultadoP = document.getElementById('resultado');
+
+        resultadoP.innerHTML = texto;
+        
+        if (tipo === 'erro') {
+            mensagemDiv.className = 'erro';
+        } else if (tipo === 'sucesso') {
+            mensagemDiv.className = 'sucesso';
+        } else { 
+            mensagemDiv.className = 'sucesso';
+        }
+
+        mensagemDiv.style.opacity = 1;
+    }
+
+    function calcularIdade() {
+        const dia = parseInt(document.getElementById("dia").value);
+        const mes = parseInt(document.getElementById("mes").value);
+        const ano = parseInt(document.getElementById("ano").value);
+
+        if (!dia || !mes || !ano || ano < 1900 || dia < 1 || dia > 31 || mes < 1 || mes > 12) {
+            exibirMensagem("Por favor, digite uma data de nascimento completa e válida.", 'erro');
+            return;
+        }
+
+        const nascimento = new Date(ano, mes - 1, dia);
+
+        if (nascimento.getFullYear() !== ano || nascimento.getMonth() !== mes - 1 || nascimento.getDate() !== dia) {
+            exibirMensagem("A data informada é inválida (ex: 31 de abril). Verifique o mês e o dia.", 'erro');
+            return;
+        }
+        
+        const hoje = new Date();
+        let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+        
+        const mesHoje = hoje.getMonth() + 1; 
+        const diaHoje = hoje.getDate();
+        
+        if (mesHoje < mes || (mesHoje === mes && diaHoje < dia)) {
+            idade--; 
+        }
+
+      
+        exibirMensagem(`A sua idade é ${idade} anos.`, 'sucesso');
+    }
+</script>
+ 
+</body>
+</html>
